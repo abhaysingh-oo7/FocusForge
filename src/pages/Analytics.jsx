@@ -15,8 +15,128 @@ const Analytics = () => {
     high: tasks.filter(task => task.priority === 'high').length
   };
   
-  // Calculate most productive day (simulated)
-  const mostProductiveDay = 'Wednesday';
+  // Calculate most productive day based on task completion timestamps
+  const calculateMostProductiveDay = () => {
+    const completedTasksWithDates = tasks.filter(task => task.completed && task.completedAt);
+    
+    if (completedTasksWithDates.length === 0) {
+      return 'No data yet';
+    }
+    
+    // Count tasks completed by day of week
+    const dayCount = {
+      'Sunday': 0, 'Monday': 0, 'Tuesday': 0, 'Wednesday': 0, 
+      'Thursday': 0, 'Friday': 0, 'Saturday': 0
+    };
+    
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    
+    completedTasksWithDates.forEach(task => {
+      try {
+        const date = new Date(task.completedAt);
+        const day = days[date.getDay()];
+        dayCount[day]++;
+      } catch (e) {
+        // Skip invalid dates
+      }
+    });
+    
+    // Find the day with most completions
+    let maxCount = 0;
+    let mostProductiveDay = 'No data yet';
+    
+    for (const [day, count] of Object.entries(dayCount)) {
+      if (count > maxCount) {
+        maxCount = count;
+        mostProductiveDay = day;
+      }
+    }
+    
+    // If no completed tasks with valid dates, use current day
+    if (mostProductiveDay === 'No data yet') {
+      const today = new Date();
+      mostProductiveDay = days[today.getDay()];
+    }
+    
+    return mostProductiveDay;
+  };
+  
+  const mostProductiveDay = calculateMostProductiveDay();
+  
+  // Generate dynamic insights based on tasks data
+  const generateInsights = () => {
+    const insights = {
+      efficientTime: "No data available yet",
+      focusRecommendation: "Try establishing a regular focus routine",
+      taskManagementTip: "Start by completing high-priority tasks first"
+    };
+    
+    // Determine most efficient time of day
+    const completedTasksWithTime = tasks.filter(task => task.completed && task.completedAt);
+    if (completedTasksWithTime.length > 0) {
+      const timeCount = {
+        morning: 0,   // 5am - 12pm
+        afternoon: 0, // 12pm - 5pm
+        evening: 0,   // 5pm - 9pm
+        night: 0      // 9pm - 5am
+      };
+      
+      completedTasksWithTime.forEach(task => {
+        try {
+          const date = new Date(task.completedAt);
+          const hour = date.getHours();
+          
+          if (hour >= 5 && hour < 12) timeCount.morning++;
+          else if (hour >= 12 && hour < 17) timeCount.afternoon++;
+          else if (hour >= 17 && hour < 21) timeCount.evening++;
+          else timeCount.night++;
+        } catch (e) {
+          // Skip invalid dates
+        }
+      });
+      
+      // Find most productive time
+      const maxTime = Object.entries(timeCount).reduce((max, [time, count]) => 
+        count > max.count ? {time, count} : max, {time: "", count: 0});
+        
+      if (maxTime.count > 0) {
+        const timeRanges = {
+          morning: "between 5am-12pm",
+          afternoon: "between 12pm-5pm",
+          evening: "between 5pm-9pm",
+          night: "between 9pm-5am"
+        };
+        
+        insights.efficientTime = `Based on your completion history, you're most productive ${timeRanges[maxTime.time]}.`;
+      }
+    }
+    
+    // Focus session recommendation
+    const currentFocusSessions = 6; // Since this is simulated, provide appropriate recommendation
+    if (completedTasks > 10) {
+      const recommendedSessions = Math.min(Math.ceil(currentFocusSessions * 1.25), 10);
+      insights.focusRecommendation = `Try increasing your focus sessions to ${recommendedSessions} per week for optimal productivity. Your current pace is ${currentFocusSessions} per week.`;
+    }
+    
+    // Task management tip based on priority completion
+    const highPriorityCompleted = tasks.filter(task => task.completed && task.priority === 'high').length;
+    const lowPriorityCompleted = tasks.filter(task => task.completed && task.priority === 'low').length;
+    const mediumPriorityCompleted = tasks.filter(task => task.completed && task.priority === 'medium').length;
+    
+    if (highPriorityCompleted + lowPriorityCompleted + mediumPriorityCompleted > 0) {
+      if (lowPriorityCompleted > highPriorityCompleted) {
+        insights.taskManagementTip = "You tend to complete low-priority tasks more often than high-priority ones. Consider tackling high-priority tasks during your most productive hours.";
+      } else if (highPriorityCompleted > lowPriorityCompleted + mediumPriorityCompleted) {
+        insights.taskManagementTip = "Great job focusing on high-priority tasks! Make sure you're also making progress on medium and low priority items to maintain balance.";
+      } else if (mediumPriorityCompleted > highPriorityCompleted + lowPriorityCompleted) {
+        insights.taskManagementTip = "You're completing many medium-priority tasks. Consider evaluating if any should be reclassified as high-priority to better focus your efforts.";
+      }
+    }
+    
+    return insights;
+  };
+  
+  const insights = generateInsights();
   
   // Simulate focus sessions data
   const focusSessions = {
@@ -111,24 +231,21 @@ const Analytics = () => {
             <div className="bg-primary dark:bg-white/5 p-3 rounded-md">
               <h3 className="text-lg font-medium text-accent mb-1">Most Efficient Time</h3>
               <p className="text-sm text-textSecondary dark:text-light-textSecondary">
-                Based on your completion history, you're most productive in the morning.
-                Try scheduling important tasks between 9am-11am.
+                {insights.efficientTime}
               </p>
             </div>
             
             <div className="bg-primary dark:bg-white/5 p-3 rounded-md">
               <h3 className="text-lg font-medium text-accent mb-1">Focus Session Recommendation</h3>
               <p className="text-sm text-textSecondary dark:text-light-textSecondary">
-                Try increasing your focus sessions to 8 per week for optimal productivity.
-                Your current pace is 6 per week.
+                {insights.focusRecommendation}
               </p>
             </div>
             
             <div className="bg-primary dark:bg-white/5 p-3 rounded-md">
               <h3 className="text-lg font-medium text-accent mb-1">Task Management Tip</h3>
               <p className="text-sm text-textSecondary dark:text-light-textSecondary">
-                You tend to complete low-priority tasks more often than high-priority ones.
-                Consider tackling high-priority tasks during your most productive hours.
+                {insights.taskManagementTip}
               </p>
             </div>
           </div>

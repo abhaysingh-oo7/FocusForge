@@ -4,6 +4,12 @@
 
 :root {
   color-scheme: dark;
+  /* Prevent scrollbar layout shifts */
+  scrollbar-gutter: stable;
+}
+
+html {
+  overflow-y: scroll;
 }
 
 body {
@@ -27,4 +33,30 @@ input[type="number"]::-webkit-outer-spin-button {
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
+  
+  /* Font weight transition helpers */
+  .font-bold-transition {
+    text-shadow: 0 0 0px currentColor;
+    transition: all 0.3s ease-in-out, text-shadow 0.3s ease-in-out, font-weight 0s;
+  }
+  
+  .font-bold-transition.active {
+    font-weight: 500; 
+    text-shadow: 0 0 1px currentColor;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
 }

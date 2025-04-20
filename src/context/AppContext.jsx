@@ -53,9 +53,19 @@ export const AppProvider = ({ children }) => {
   };
 
   const toggleTaskCompletion = (id) => {
-    setTasks(tasks.map(task => 
-      task.id === id ? { ...task, completed: !task.completed } : task
-    ));
+    setTasks(tasks.map(task => {
+      if (task.id === id) {
+        // If task is being marked as completed, add a timestamp
+        if (!task.completed) {
+          return { ...task, completed: true, completedAt: new Date().toISOString() };
+        } else {
+          // If task is being marked as incomplete, remove the completion timestamp
+          const { completedAt, ...restTask } = task;
+          return { ...restTask, completed: false };
+        }
+      }
+      return task;
+    }));
   };
 
   const toggleDarkMode = () => {

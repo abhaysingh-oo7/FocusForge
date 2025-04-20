@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Play, Pause, RotateCcw, SkipForward } from 'lucide-react';
 
 const Timer = () => {
   // Load settings from localStorage or use defaults
@@ -144,9 +145,9 @@ const Timer = () => {
             fill="none"
           ></circle>
           
-          {/* Progress circle */}
+          {/* Progress circle - always green now */}
           <circle
-            className={`${mode === 'focus' ? 'text-accent' : 'text-green-500'} stroke-current`}
+            className="text-green-500 stroke-current"
             strokeWidth="4"
             strokeLinecap="round"
             strokeDasharray={`${2 * Math.PI * 45}`}
@@ -184,23 +185,39 @@ const Timer = () => {
       <div className="flex flex-wrap justify-center gap-4 mb-4">
         <button
           onClick={toggleTimer}
-          className="btn dark:bg-accent dark:text-white"
+          className={`flex items-center justify-center gap-2 px-4 py-2 rounded-md font-medium text-white transition-all duration-200 min-w-[100px] ${
+            isActive 
+              ? 'bg-red-500 hover:bg-red-600 dark:bg-red-500 dark:hover:bg-red-600' 
+              : 'bg-green-500 hover:bg-green-600 dark:bg-green-500 dark:hover:bg-green-600'
+          }`}
         >
-          {isActive ? 'Pause' : 'Start'}
+          {isActive ? (
+            <>
+              <Pause className="h-4 w-4" />
+              <span>Pause</span>
+            </>
+          ) : (
+            <>
+              <Play className="h-4 w-4" />
+              <span>Start</span>
+            </>
+          )}
         </button>
         
         <button
           onClick={resetTimer}
-          className="px-4 py-2 rounded-md bg-secondary text-text font-medium hover:bg-opacity-80 transition-all duration-200 dark:bg-light-primary dark:text-light-text"
+          className="flex items-center gap-2 px-4 py-2 rounded-md bg-secondary text-text font-medium hover:bg-opacity-80 transition-all duration-200 dark:bg-light-primary dark:text-light-text"
         >
-          Reset
+          <RotateCcw className="h-4 w-4" />
+          <span>Reset</span>
         </button>
         
         <button
           onClick={skipSession}
-          className="px-4 py-2 rounded-md bg-secondary text-text font-medium hover:bg-opacity-80 transition-all duration-200 dark:bg-light-primary dark:text-light-text"
+          className="flex items-center gap-2 px-4 py-2 rounded-md bg-secondary text-text font-medium hover:bg-opacity-80 transition-all duration-200 dark:bg-light-primary dark:text-light-text"
         >
-          Skip
+          <SkipForward className="h-4 w-4" />
+          <span>Skip</span>
         </button>
       </div>
       

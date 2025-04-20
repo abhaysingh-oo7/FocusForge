@@ -4,6 +4,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -12,6 +13,10 @@ export default {
         'accent': '#7c67fb',
         'text': '#f1f1f3',
         'textSecondary': '#a1a1aa',
+        'light-primary': '#f8fafc',
+        'light-secondary': '#f1f5f9',
+        'light-text': '#334155',
+        'light-textSecondary': '#64748b',
       },
     },
   },

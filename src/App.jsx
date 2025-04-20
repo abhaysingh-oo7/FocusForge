@@ -11,9 +11,9 @@ function App() {
   return (
     <AppProvider>
       <Router>
-        <div className="min-h-screen bg-primary text-text">
+        <div className="min-h-screen bg-primary text-text dark:bg-light-primary dark:text-light-text transition-colors duration-200">
           <Navbar />
-          <main>
+          <main className="container mx-auto px-4 sm:px-6 lg:px-8 pb-12">
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/tasks" element={<Tasks />} />

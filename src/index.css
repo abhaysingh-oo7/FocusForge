@@ -17,11 +17,11 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @layer components {
   .btn {
-    @apply px-4 py-2 rounded-md bg-accent text-text font-medium hover:bg-opacity-90 transition-all duration-200;
+    @apply px-4 py-2 rounded-md bg-accent text-white font-medium hover:bg-opacity-90 transition-all duration-500;
   }
 
   .card {
-    @apply bg-secondary rounded-lg p-4 shadow-lg;
+    @apply bg-secondary dark:bg-light-secondary rounded-lg p-4 shadow-lg transition-colors duration-500;
   }
 
   .container-custom {

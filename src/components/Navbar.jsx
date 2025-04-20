@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAppContext } from '../context/AppContext';
-import { Menu, X, Moon, Sun } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
-  const { darkMode, toggleDarkMode } = useAppContext();
+  const { isTransitioning } = useAppContext();
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
@@ -17,7 +18,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-secondary shadow-md dark:bg-light-secondary transition-colors duration-200">
+    <nav className={`bg-secondary shadow-md dark:bg-light-secondary transition-colors duration-500 ${isTransitioning ? 'duration-700' : ''}`}>
       <div className="container-custom py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="text-2xl font-bold text-accent">
@@ -64,17 +65,7 @@ const Navbar = () => {
               Settings
             </Link>
             
-            <button 
-              onClick={toggleDarkMode} 
-              className="ml-2 p-2 rounded-full bg-primary hover:bg-opacity-80 transition-colors duration-200 dark:bg-light-primary"
-              aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-            >
-              {darkMode ? (
-                <Sun className="h-5 w-5 text-yellow-300" />
-              ) : (
-                <Moon className="h-5 w-5 text-accent" />
-              )}
-            </button>
+            <ThemeToggle />
           </div>
         </div>
         
@@ -118,20 +109,7 @@ const Navbar = () => {
               </Link>
               
               <div className="flex items-center px-3 py-2">
-                <span className="text-text dark:text-light-text mr-3">
-                  {darkMode ? 'Dark Mode' : 'Light Mode'}
-                </span>
-                <button 
-                  onClick={toggleDarkMode} 
-                  className="p-2 rounded-full bg-primary hover:bg-opacity-80 transition-colors duration-200 dark:bg-light-primary"
-                  aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-                >
-                  {darkMode ? (
-                    <Sun className="h-5 w-5 text-yellow-300" />
-                  ) : (
-                    <Moon className="h-5 w-5 text-accent" />
-                  )}
-                </button>
+                <ThemeToggle />
               </div>
             </div>
           </div>

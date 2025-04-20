@@ -12,22 +12,27 @@ export const AppProvider = ({ children }) => {
   
   const [darkMode, setDarkMode] = useState(() => {
     const savedDarkMode = localStorage.getItem('focusforge_darkMode');
-    // Always default to true (dark mode) if not previously set
-    return savedDarkMode !== null ? JSON.parse(savedDarkMode) : true;
+    // Check system preference if not previously set
+    if (savedDarkMode === null) {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      return prefersDark;
+    }
+    return JSON.parse(savedDarkMode);
   });
+  
+  // Theme transition state
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     localStorage.setItem('focusforge_tasks', JSON.stringify(tasks));
   }, [tasks]);
   
-  // Ensure dark mode is applied on initial load
+  // Apply dark mode with transitions
   useEffect(() => {
-    // Apply dark mode to document as soon as the component mounts
-    document.documentElement.classList.add('dark');
-    
-    // Save darkMode state to localStorage and update classes when it changes
+    // Save darkMode state to localStorage
     localStorage.setItem('focusforge_darkMode', JSON.stringify(darkMode));
     
+    // Apply/remove dark class with transition
     if (darkMode) {
       document.documentElement.classList.add('dark');
     } else {
@@ -54,7 +59,13 @@ export const AppProvider = ({ children }) => {
   };
 
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setDarkMode(!darkMode);
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 500); // Match this with the CSS transition duration
+    }, 50); // Small delay to ensure animation starts
   };
 
   const value = {
@@ -64,7 +75,8 @@ export const AppProvider = ({ children }) => {
     updateTask,
     toggleTaskCompletion,
     darkMode,
-    toggleDarkMode
+    toggleDarkMode,
+    isTransitioning
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

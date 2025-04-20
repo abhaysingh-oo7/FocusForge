@@ -25,17 +25,17 @@ const TaskCard = ({ task }) => {
   };
 
   const priorityClasses = {
-    low: "bg-green-500 bg-opacity-20 text-green-400",
-    medium: "bg-yellow-500 bg-opacity-20 text-yellow-400",
-    high: "bg-red-500 bg-opacity-20 text-red-400"
+    low: "bg-green-500 bg-opacity-20 text-green-500 dark:text-green-400",
+    medium: "bg-yellow-500 bg-opacity-20 text-yellow-500 dark:text-yellow-400",
+    high: "bg-red-500 bg-opacity-20 text-red-500 dark:text-red-400"
   };
 
   return (
-    <div className={`card mb-4 border-l-4 ${task.completed ? 'border-green-500 opacity-75' : `border-${task.priority === 'high' ? 'red' : task.priority === 'medium' ? 'yellow' : 'green'}-500`}`}>
+    <div className={`card mb-4 border-l-4 bg-secondary dark:bg-light-secondary transition-colors duration-500 ${task.completed ? 'border-green-500 opacity-75' : `border-${task.priority === 'high' ? 'red' : task.priority === 'medium' ? 'yellow' : 'green'}-500`}`}>
       {isEditing ? (
         <form onSubmit={handleSubmit} className="space-y-3">
           <div>
-            <label htmlFor="title" className="block text-sm font-medium text-textSecondary mb-1">Title</label>
+            <label htmlFor="title" className="block text-sm font-medium text-textSecondary dark:text-light-textSecondary mb-1">Title</label>
             <input
               type="text"
               id="title"
@@ -43,30 +43,30 @@ const TaskCard = ({ task }) => {
               value={editedTask.title}
               onChange={handleChange}
               required
-              className="w-full bg-primary border border-secondary rounded-md px-3 py-2 text-text focus:outline-none focus:ring-2 focus:ring-accent"
+              className="w-full bg-primary border border-secondary rounded-md px-3 py-2 text-text dark:text-light-text dark:bg-white/5 focus:outline-none focus:ring-2 focus:ring-accent"
             />
           </div>
           
           <div>
-            <label htmlFor="description" className="block text-sm font-medium text-textSecondary mb-1">Description</label>
+            <label htmlFor="description" className="block text-sm font-medium text-textSecondary dark:text-light-textSecondary mb-1">Description</label>
             <textarea
               id="description"
               name="description"
               value={editedTask.description}
               onChange={handleChange}
               rows="2"
-              className="w-full bg-primary border border-secondary rounded-md px-3 py-2 text-text focus:outline-none focus:ring-2 focus:ring-accent"
+              className="w-full bg-primary border border-secondary rounded-md px-3 py-2 text-text dark:text-light-text dark:bg-white/5 focus:outline-none focus:ring-2 focus:ring-accent"
             ></textarea>
           </div>
           
           <div>
-            <label htmlFor="priority" className="block text-sm font-medium text-textSecondary mb-1">Priority</label>
+            <label htmlFor="priority" className="block text-sm font-medium text-textSecondary dark:text-light-textSecondary mb-1">Priority</label>
             <select
               id="priority"
               name="priority"
               value={editedTask.priority}
               onChange={handleChange}
-              className="w-full bg-primary border border-secondary rounded-md px-3 py-2 text-text focus:outline-none focus:ring-2 focus:ring-accent"
+              className="w-full bg-primary border border-secondary rounded-md px-3 py-2 text-text dark:text-light-text dark:bg-white/5 focus:outline-none focus:ring-2 focus:ring-accent"
             >
               <option value="low">Low</option>
               <option value="medium">Medium</option>
@@ -78,13 +78,13 @@ const TaskCard = ({ task }) => {
             <button
               type="button"
               onClick={() => setIsEditing(false)}
-              className="px-3 py-1 bg-secondary hover:bg-opacity-80 rounded-md transition-colors duration-200"
+              className="px-3 py-1 bg-primary dark:bg-white/5 hover:bg-opacity-80 rounded-md transition-colors duration-200 text-text dark:text-light-text"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-3 py-1 bg-accent hover:bg-opacity-90 rounded-md transition-colors duration-200"
+              className="px-3 py-1 bg-accent hover:bg-opacity-90 rounded-md transition-colors duration-200 text-white"
             >
               Save
             </button>
@@ -100,7 +100,7 @@ const TaskCard = ({ task }) => {
                 onChange={() => toggleTaskCompletion(task.id)}
                 className="w-5 h-5 rounded-md border-secondary text-accent focus:ring-accent"
               />
-              <h3 className={`ml-3 text-lg font-medium ${task.completed ? 'line-through text-textSecondary' : 'text-text'}`}>
+              <h3 className={`ml-3 text-lg font-medium ${task.completed ? 'line-through text-textSecondary dark:text-light-textSecondary' : 'text-text dark:text-light-text'}`}>
                 {task.title}
               </h3>
             </div>
@@ -109,7 +109,7 @@ const TaskCard = ({ task }) => {
             </span>
           </div>
           
-          <p className={`ml-8 text-sm ${task.completed ? 'text-textSecondary line-through' : 'text-text'}`}>
+          <p className={`ml-8 text-sm ${task.completed ? 'text-textSecondary dark:text-light-textSecondary line-through' : 'text-text dark:text-light-text'}`}>
             {task.description}
           </p>
           

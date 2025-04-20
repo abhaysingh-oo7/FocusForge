@@ -38,10 +38,10 @@ export default function Settings() {
 
   return (
     <div className="mx-auto max-w-2xl p-6">
-      <h1 className="mb-6 text-2xl font-bold text-text">Settings</h1>
+      <h1 className="mb-6 text-2xl font-bold text-text dark:text-light-text transition-colors duration-500">Settings</h1>
 
       {showSuccess && (
-        <div className="mb-4 flex items-center rounded-md bg-green-500/20 p-3 text-green-400">
+        <div className="mb-4 flex items-center rounded-md bg-green-500/20 p-3 text-green-500 dark:text-green-400 transition-colors duration-500">
           <CheckCircle className="mr-2 h-5 w-5" />
           <span>Settings saved successfully!</span>
         </div>
@@ -49,7 +49,7 @@ export default function Settings() {
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label className="block text-sm font-medium text-textSecondary">
+          <label className="block text-sm font-medium text-textSecondary dark:text-light-textSecondary transition-colors duration-500">
             Focus Time (minutes)
           </label>
           <input
@@ -60,12 +60,12 @@ export default function Settings() {
             onChange={(e) =>
               setSettings({ ...settings, focusTime: parseInt(e.target.value) })
             }
-            className="mt-1 block w-full rounded-md border-secondary bg-secondary text-text shadow-sm focus:border-accent focus:ring-accent"
+            className="mt-1 block w-full rounded-md border-secondary bg-secondary dark:bg-light-secondary text-text dark:text-light-text shadow-sm focus:border-accent focus:ring-accent transition-colors duration-500"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-textSecondary">
+          <label className="block text-sm font-medium text-textSecondary dark:text-light-textSecondary transition-colors duration-500">
             Break Time (minutes)
           </label>
           <input
@@ -76,13 +76,13 @@ export default function Settings() {
             onChange={(e) =>
               setSettings({ ...settings, breakTime: parseInt(e.target.value) })
             }
-            className="mt-1 block w-full rounded-md border-secondary bg-secondary text-text shadow-sm focus:border-accent focus:ring-accent"
+            className="mt-1 block w-full rounded-md border-secondary bg-secondary dark:bg-light-secondary text-text dark:text-light-text shadow-sm focus:border-accent focus:ring-accent transition-colors duration-500"
           />
         </div>
 
         <button
           type="submit"
-          className="flex w-full items-center justify-center space-x-2 rounded-md bg-accent px-4 py-2 text-text hover:bg-opacity-90"
+          className="flex w-full items-center justify-center space-x-2 rounded-md bg-accent px-4 py-2 text-white hover:bg-opacity-90 transition-colors duration-500"
         >
           <Save className="h-5 w-5" />
           <span>Save Settings</span>

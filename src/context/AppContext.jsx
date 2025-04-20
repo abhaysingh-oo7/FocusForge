@@ -12,16 +12,22 @@ export const AppProvider = ({ children }) => {
   
   const [darkMode, setDarkMode] = useState(() => {
     const savedDarkMode = localStorage.getItem('focusforge_darkMode');
-    return savedDarkMode ? JSON.parse(savedDarkMode) : true;
+    // Always default to true (dark mode) if not previously set
+    return savedDarkMode !== null ? JSON.parse(savedDarkMode) : true;
   });
 
   useEffect(() => {
     localStorage.setItem('focusforge_tasks', JSON.stringify(tasks));
   }, [tasks]);
   
+  // Ensure dark mode is applied on initial load
   useEffect(() => {
+    // Apply dark mode to document as soon as the component mounts
+    document.documentElement.classList.add('dark');
+    
+    // Save darkMode state to localStorage and update classes when it changes
     localStorage.setItem('focusforge_darkMode', JSON.stringify(darkMode));
-    // Apply dark mode to the document element
+    
     if (darkMode) {
       document.documentElement.classList.add('dark');
     } else {

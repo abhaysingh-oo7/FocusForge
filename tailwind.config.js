@@ -18,7 +18,19 @@ export default {
         'light-text': '#334155',
         'light-textSecondary': '#64748b',
       },
+      screens: {
+        'xs': '480px',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addBase }) {
+      addBase({
+        'html': { fontSize: '16px' },
+        'html.dark': { 
+          colorScheme: 'dark',
+        },
+      })
+    },
+  ],
 } 

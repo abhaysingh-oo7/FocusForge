@@ -1,19 +1,30 @@
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AppProvider } from './context/AppContext';
 import Navbar from './components/Navbar';
-import QuoteBox from './components/QuoteBox';
-import Timer from './components/Timer';
+import Dashboard from './pages/Dashboard';
+import Tasks from './pages/Tasks';
+import FocusTimer from './pages/FocusTimer';
+import Settings from './pages/Settings';
+import Analytics from './pages/Analytics';
 
 function App() {
   return (
-    <Router>
-      <div className="min-h-screen bg-primary text-text">
-        <Navbar />
-        <main className="p-4 flex flex-col gap-6 items-center justify-center">
-          <Timer />
-          <QuoteBox />
-        </main>
-      </div>
-    </Router>
+    <AppProvider>
+      <Router>
+        <div className="min-h-screen bg-primary text-text">
+          <Navbar />
+          <main>
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/tasks" element={<Tasks />} />
+              <Route path="/focus" element={<FocusTimer />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/analytics" element={<Analytics />} />
+            </Routes>
+          </main>
+        </div>
+      </Router>
+    </AppProvider>
   );
 }
 

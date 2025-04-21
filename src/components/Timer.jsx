@@ -157,6 +157,11 @@ const Timer = () => {
             r="45"
             fill="none"
             transform="rotate(-90 50 50)"
+            style={{ 
+              transition: isActive 
+                ? 'stroke-dashoffset 1s linear' 
+                : 'stroke-dashoffset 0.3s ease-out'
+            }}
           ></circle>
           
           {/* Timer text */}

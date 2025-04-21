@@ -1,4 +1,5 @@
 import { useAppContext } from '../context/AppContext';
+import ProductivityHeatmap from '../components/ProductivityHeatmap';
 
 const Analytics = () => {
   const { tasks } = useAppContext();
@@ -216,12 +217,8 @@ const Analytics = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="card bg-secondary dark:bg-light-secondary transition-colors duration-500">
           <h2 className="text-xl font-bold text-text dark:text-light-text mb-4">Productivity Over Time</h2>
-          <div className="h-64 flex items-center justify-center">
-            <p className="text-textSecondary dark:text-light-textSecondary text-center">
-              This is a placeholder for a chart showing your productivity trends over time.
-              <br />
-              <span className="text-sm">In a real app, this would be a line or bar chart showing tasks completed per day/week.</span>
-            </p>
+          <div className="h-56">
+            <ProductivityHeatmap tasks={tasks} />
           </div>
         </div>
         

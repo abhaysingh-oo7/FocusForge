@@ -9,7 +9,8 @@ FocusForge is a productivity tool that combines time management and task trackin
 
 1. **Task Management**  
    Efficient task creation, priority setting, and tracking.
-   ![Task Page](./src/assets/Taskpage.png)
+   ![Task Page](./public/screenshots/Taskpage.png)
+
 
    
 2. **Focus Timer**  
@@ -17,6 +18,3 @@ FocusForge is a productivity tool that combines time management and task trackin
 
 3. **Analytics**  
    View insights with daily/weekly heatmaps and stats.
-
-
-

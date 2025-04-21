@@ -42,6 +42,20 @@ FocusForge is a productivity tool that combines time management and task trackin
 - **State Management:** Context API
 - **Other Libraries:** `date-fns`, `lucide-react`, `react-router-dom`
 
+## Quote to Inspire
+
+_"The key is not to prioritize what's on your schedule, but to schedule your priorities."_  
+— Stephen Covey
+
+FocusForge is designed to help you do just that. Prioritize what truly matters, stay focused, and achieve your goals.
+
+Start Forging Your Focus Today!
+Take control of your time and tasks. With FocusForge, it’s time to be productive like never before.
+
+Check out the live version of **FocusForge** here:  
+[Focus Forge on Vercel](https://focus-forge-bice.vercel.app/)
+
+
 
 
 

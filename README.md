@@ -9,18 +9,31 @@ FocusForge is a productivity tool that combines time management and task trackin
 
 1. **Task Management**  
    Efficient task creation, priority setting, and tracking.
-   ![Task Page](./public/screenshots/Taskpage.png)
+
+   <div align="center">
+     <img src="./public/screenshots/Taskpage.png" alt="Task Page" width="600"/>
+   </div>
 
 
    
 2. **Focus Timer**  
    Helps users maintain focus with Pomodoro sessions.
 
+   <div align="center">
+     <span style="display: inline-block; margin: 0 10px;">
+       <img src="./public/screenshots/Focus timer.png" alt="Focus Timer" width="200"/>
+     </span>
+     <span style="display: inline-block; margin: 0 10px;">
+       <img src="./public/screenshots/breakTimer.png" alt="Focus Timer" width="200"/>
+     </span>
+   </div>
+
+
 3. **Analytics**  
-<<<<<<< HEAD
    View insights with daily/weekly heatmaps and stats.
-=======
-   View insights with daily/weekly heatmaps and stats.
+   <div align="center">
+     <img src="./public/screenshots/Analytics .png" alt="Analytics" width="600"/>
+   </div>
 
 
 ## Technology Stack:
@@ -33,4 +46,4 @@ FocusForge is a productivity tool that combines time management and task trackin
 
 
 
->>>>>>> b62938034c74264537650c92968548b42b7d2ee8
+

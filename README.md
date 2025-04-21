@@ -17,9 +17,6 @@ FocusForge is a productivity tool that combines time management and task trackin
    Helps users maintain focus with Pomodoro sessions.
 
 3. **Analytics**  
-<<<<<<< HEAD
-   View insights with daily/weekly heatmaps and stats.
-=======
    View insights with daily/weekly heatmaps and stats.
 
 
@@ -33,4 +30,3 @@ FocusForge is a productivity tool that combines time management and task trackin
 
 
 
->>>>>>> b62938034c74264537650c92968548b42b7d2ee8

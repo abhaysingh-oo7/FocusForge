@@ -1,12 +1,16 @@
-# React + Vite
+<h1 align="center">
+  FocusForge
+  <img src="./public/Forge.png" alt="FocusForge Logo" width="40" style="vertical-align: middle;" />
+</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p>FocusForge is a productivity tool that combines time management and task tracking to help users stay focused, organized, and maximize efficiency.</p>
 
-Currently, two official plugins are available:
+<h2>Features:</h2>
+1. Task Management<br><br>
+<p>Efficient task creation, priority setting, and tracking.</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+2. Focus Timer<br>
+Helps users maintain focus with Pomodoro sessions.<br>
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+

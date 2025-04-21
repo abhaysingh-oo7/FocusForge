@@ -21,10 +21,10 @@ FocusForge is a productivity tool that combines time management and task trackin
 
    <div align="center">
      <span style="display: inline-block; margin: 0 10px;">
-       <img src="./public/screenshots/Focus timer.png" alt="Focus Timer" width="200"/>
+       <img src="./public/screenshots/Focus timer.png" alt="Focus Timer" width="200" height="280"/>
      </span>
      <span style="display: inline-block; margin: 0 10px;">
-       <img src="./public/screenshots/breakTimer.png" alt="Focus Timer" width="200"/>
+       <img src="./public/screenshots/breakTimer.png" alt="Focus Timer" width="200" height="280"/>
      </span>
    </div>
 
@@ -52,7 +52,7 @@ FocusForge is designed to help you do just that. Prioritize what truly matters, 
 Start Forging Your Focus Today!
 Take control of your time and tasks. With FocusForge, it’s time to be productive like never before.
 
-Check out the live version of **FocusForge** here:  
+Check out the live version of **FocusForge** here: _
 [Focus Forge on Vercel](https://focus-forge-bice.vercel.app/)
 
 

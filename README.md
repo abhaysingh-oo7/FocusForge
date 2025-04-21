@@ -42,6 +42,33 @@ FocusForge is a productivity tool that combines time management and task trackin
 - **State Management:** Context API
 - **Other Libraries:** `date-fns`, `lucide-react`, `react-router-dom`
 
+
+## Setup Instructions
+
+Follow these steps to get **FocusForge** up and running:
+
+* Start by cloning the repository from GitHub and navigating to the project directory. This ensures you have the latest version of FocusForge on your local machine.
+
+```
+git clone https://github.com/your-username/focusforge.git
+cd focusforge
+```
+
+* Install the necessary dependencies required for the project. This will set up React, Tailwind CSS, and other essential packages to ensure FocusForge runs smoothly.
+```
+npm install
+```
+
+* Launch the application using the development server. This will open FocusForge in your browser, allowing you to start exploring its features.
+```
+npm run dev
+```
+
+
+
+
+
+
 ## Quote to Inspire
 
 _"The key is not to prioritize what's on your schedule, but to schedule your priorities."_  
